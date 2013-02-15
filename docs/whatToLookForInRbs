@@ -1,0 +1,50 @@
+The Trivial
+No Imports of the type: 'edu.emory.mathcs.backport.java.util.*'
+implement hashCode with equals. Also, have a toString() if equals() is implemented.
+Classes MUST have a reasonable javadoc.  The only exception is when someone is doing a major refactoring involving moving other peoples' classes around. Asking someone who did not write the class in the first place to add documentation is not fair.
+Avoid over optimization of code. Readability should be balanced with optimization.
+Checking in extensively commented out code should be discouraged.
+Unit Testing
+If there are no unit tests, ask why? If there is no better reason than I was too lazy, do not approve.
+All new unit tests should be in TestNG and must not be placed under liar/test.
+Class Design
+If a class is too big, ask for it to be broken down since it may be doing a lot of work. There is no clear definition of 'too big'. I know one when I see it. My personal limit is 500 lines. Others may have a higher tolerance. However, the important point is that every method in the class should be aligned with the name of the class.
+If a class has more than two constructors, ask why. Get them to use static factory methods if needed.
+If a constructor has more than 4 parameters, ask for a Builder pattern to make client's lives easier.
+Constructors and public methods should  check parameters for correctness. Private methods do not need to check parameters.
+If a field is non-final, ask why. Push for as many fields to be final as possible.
+If a field is public, ask why.
+Class should not return mutable fields (lists, collections) to clients. Instead it should return views/iterators so client cannot change internal state of the object.
+Prefer interfaces over abstract classes.
+Prefer composition over inheritance.
+Avoid interfaces that only contain constants.
+Constructors should avoid calling new as much as possible. 
+Anytime implementors of an interface throw UnsupportedOperationException, ask why. This may indicate bad design.
+Data Structures
+Prefer primitive arrays over collections of boxed types. This is most importantly true when you are loading huge lists/arrays and have memory concerns.
+Methods
+Avoid modifying lists while iterating over them.
+Ask why a method is 'synchronized'.
+Ask for interfaces in method signature should unit tests could send in mocks.
+Exception Handling
+Avoid custom exceptions unless they are actually encapsulating something interesting.
+Avoid checked exceptions as much as possible.
+Exceptions should be caught at the right level. Typically, this means converting checked exceptions (e.g. IOExceptions) to RuntimeExceptions at the source, and then catching them at a reasonably high level and then log.
+Logging
+No sysouts.
+Avoid verbose logging.
+Ask why something is being log.info'd. Push for more things to be log.debug'd.
+If log.debug is being used, push them to wrap it in if(log.isDebugEnabled)
+When logging an exception, make sure that the entire stacktrace is logged as in log.warn("msg", e) instead of log.warn("msg");
+Concurrency
+When using a ScheduledExecutorService, tasks should have a try-catch around them. Otherwise, subsequent tasks may be cancelled.
+Ask for an explanation if the developer uses Threads instead of ExecutorServices.
+Any background threads started should have a hook to shut them down at container stop.
+Spring
+For a config 2 based service, if the developer uses a *.prop or *.springconfig, point out that it is a noop.
+Creating a bean for an enum is pointless.
+All db transaction managers should be collected in txMgr.spring
+Recommend that all other imported components should go in imports.spring
+A spring file that is too big should be broken down. My personal  preference is for around 500 lines of code.
+Build.xml
+Watch out for network dependencies being added to code that is supposed to be independent of network e.g. feast, lame, util, app-common etc.
