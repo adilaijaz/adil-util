@@ -5,6 +5,7 @@ map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
 syntax on
 colorscheme inkpot 
 set hlsearch
+set ruler
 
 function! DoPrettyXML()
   " save the filetype so we can restore it later
