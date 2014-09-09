@@ -1,9 +1,16 @@
-autocmd BufNewFile,BufRead *.json set ft=javascript
-
-au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
-map <leader>jt  <Esc>:%!json_xs -f json -t json-pretty<CR>
-
 syntax on
+filetype on
+
+au BufNewFile,BufRead *.job set filetype=properties
+autocmd BufNewFile,BufRead *.json set filetype=javascript
+
 colorscheme inkpot 
+colorscheme solarized 
+
 set hlsearch
 set ruler
+
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
+set tabstop=1 shiftwidth=2
+
