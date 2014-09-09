@@ -1,0 +1,34 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# set the command prompt
+PS1="[\u@ \w]\\$ "
+
+# User specific aliases and functions
+# Alias to multiple ls commands
+alias la='ls -A'               # show hidden files
+alias ll='ls -Al'               # show hidden files
+alias ls='ls -Gh'               # show hidden files
+
+alias grep="grep --color=auto --exclude=\"*\.svn*\" --exclude=\"*\.git*\" "
+alias grepjava="grep -RH --include=\"*.java\""
+alias grepjob="grep -RH --include=\"*.job\""
+alias greppom="grep -RH --include=\"pom.xml\" --include=\"*.pom\""
+alias gitpull="git pull origin master"
+alias gitpush="git push origin master"
+alias pp='python -mjson.tool'
+###########################################################
+# bashrc variables from linkedin
+###########################################################
+
+### aliases
+
+# adil's aliases
+alias vi='vim -O '
+alias cdw='cd ${HOME}/Documents/workspace/'
+alias cdl='cd ${HOME}/Documents/workspace/riq'
+alias cdh='cd ${HOME}/Documents/workspace/hadoop-code'
