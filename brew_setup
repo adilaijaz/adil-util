@@ -1,0 +1,22 @@
+#install brew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#
+sleep 10
+brew update
+sleep 5
+brew doctor
+sleep 5
+brew tap caskroom/cask
+brew install brew-cask
+brew cask install intellij-idea
+brew cask install github
+brew cask install sourcetree
+brew cask install iterm2
+brew cask install alfred
+brew cask install virtualbox
+brew cask install vagrant
+brew cask install java
+brew cask install sublime-text
+brew cask install viscosity
+brew install maven
+brew install npm
